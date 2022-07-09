@@ -9,7 +9,7 @@ class GamePage extends StatefulWidget {
 }
 
 class _GamePageState extends State<GamePage> {
-  int _questionNumber = 0;
+  int _questionNumber = 1;
   bool _guessing = true;
 
   _submitGuess(String guess) {
@@ -33,7 +33,7 @@ class _GamePageState extends State<GamePage> {
       return Scaffold(
         body: Column(
           children: <Widget>[
-            const GameHeader(),
+            GameHeader(_questionNumber),
             const Center(
               child: Padding(
                 padding: EdgeInsets.all(60),
@@ -86,9 +86,9 @@ class _GamePageState extends State<GamePage> {
         onTap: _nextGuess,
         child: Scaffold(
           body: Column(
-            children: const <Widget>[
-              GameHeader(),
-              Center(
+            children: <Widget>[
+              GameHeader(_questionNumber),
+              const Center(
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(0, 60, 0, 20),
                   child: Image(
@@ -97,7 +97,7 @@ class _GamePageState extends State<GamePage> {
                   ),
                 ),
               ),
-              Center(
+              const Center(
                 child: Text(
                   'United States of America',
                   style: TextStyle(
@@ -106,7 +106,7 @@ class _GamePageState extends State<GamePage> {
                   ),
                 ),
               ),
-              Center(
+              const Center(
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(0, 80, 0, 20),
                   child: Image(
@@ -115,7 +115,7 @@ class _GamePageState extends State<GamePage> {
                   ),
                 ),
               ),
-              Center(
+              const Center(
                 child: Text(
                   'United States of America is Correct!',
                   style: TextStyle(
@@ -124,7 +124,7 @@ class _GamePageState extends State<GamePage> {
                   ),
                 ),
               ),
-              Center(
+              const Center(
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(0, 150, 0, 20),
                   child: Text(
@@ -145,7 +145,9 @@ class _GamePageState extends State<GamePage> {
 }
 
 class GameHeader extends StatelessWidget {
-  const GameHeader({Key? key}) : super(key: key);
+  final int position;
+
+  const GameHeader(this.position, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -153,8 +155,8 @@ class GameHeader extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: const <Widget>[
-          Text(
+        children: <Widget>[
+          const Text(
             'Flag Quiz',
             style: TextStyle(
               color: Colors.white,
@@ -162,8 +164,8 @@ class GameHeader extends StatelessWidget {
             ),
           ),
           Text(
-            '1/195',
-            style: TextStyle(
+            '$position/195',
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 20,
             ),
