@@ -4,9 +4,9 @@
         "code": "AF"
     },
     {
-        "name": "Åland Islands",
+        "name": "Aland Islands",
         "alternates": [
-            "Aland Islands"
+            "Åland Islands"
         ],
         "code": "AX"
     },
@@ -187,7 +187,10 @@
         "code": "CX"
     },
     {
-        "name": "Cocos (Keeling) Islands",
+        "name": "Cocos Islands",
+        "alternates": [
+            "Cocos (Keeling) Islands"
+        ],
         "code": "CC"
     },
     {
@@ -203,11 +206,11 @@
         "code": "CG"
     },
     {
-        "name": "Congo, The Democratic Republic of the",
+        "name": "Democratic Republic of the Congo",
         "alternates": [
             "DCR",
             "The Democratic Republic of the Congo",
-            "Democratic Republic of the Congo"
+            "Congo, The Democratic Republic of the"
         ],
         "code": "CD"
     },
@@ -280,9 +283,9 @@
         "code": "ET"
     },
     {
-        "name": "Falkland Islands (Malvinas)",
+        "name": "Falkland Islands",
         "alternates": [
-            "Falkland Islands"
+            "Falkland Islands (Malvinas)"
         ],
         "code": "FK"
     },
@@ -387,9 +390,9 @@
         "code": "HM"
     },
     {
-        "name": "Holy See (Vatican City State)",
+        "name": "Vatican City",
         "alternates": [
-            "Vatican City"
+            "Holy See (Vatican City State)"
         ],
         "code": "VA"
     },
@@ -418,9 +421,9 @@
         "code": "ID"
     },
     {
-        "name": "Iran, Islamic Republic Of",
+        "name": "Iran",
         "alternates": [
-            "Iran"
+            "Iran, Islamic Republic Of"
         ],
         "code": "IR"
     },
@@ -473,10 +476,10 @@
         "code": "KI"
     },
     {
-        "name": "Korea, Republic of",
+        "name": "South Korea",
         "alternates": [
             "Korea",
-            "South Korea"
+            "Korea, Republic of"
         ],
         "code": "KR"
     },
@@ -533,9 +536,9 @@
         "code": "MO"
     },
     {
-        "name": "Macedonia, The Former Yugoslav Republic of",
+        "name": "Macedonia",
         "alternates": [
-            "Macedonia"
+            "Macedonia, The Former Yugoslav Republic of"
         ],
         "code": "MK"
     },
@@ -592,16 +595,16 @@
         "code": "MX"
     },
     {
-        "name": "Micronesia, Federated States of",
+        "name": "Micronesia",
         "alternates": [
-            "Micronesia"
+            "Micronesia, Federated States of"
         ],
         "code": "FM"
     },
     {
-        "name": "Moldova, Republic of",
+        "name": "Moldova",
         "alternates": [
-            "Moldova"
+            "Moldova, Republic of"
         ],
         "code": "MD"
     },
@@ -694,9 +697,9 @@
         "code": "PW"
     },
     {
-        "name": "Palestinian Territory, Occupied",
+        "name": "Palestine",
         "alternates": [
-            "Palestine"
+            "Palestinian Territory, Occupied"
         ],
         "code": "PS"
     },
@@ -753,9 +756,9 @@
         "code": "RS"
     },  
     {
-        "name": "Russian Federation",
+        "name": "Russia",
         "alternates": [
-            "Russia"
+            "Russian Federation"
         ],
         "code": "RU"
     },
@@ -880,16 +883,16 @@
         "code": "CH"
     },
     {
-        "name": "Syrian Arab Republic",
+        "name": "Syria",
         "alternates": [
-            "Syria"
+            "Syrian Arab Republic"
         ],
         "code": "SY"
     },
     {
-        "name": "Taiwan, Province of China",
+        "name": "Taiwan",
         "alternates": [
-            "Taiwan"
+            "Taiwan, Province of China"
         ],
         "code": "TW"
     },
@@ -898,9 +901,9 @@
         "code": "TJ"
     },
     {
-        "name": "Tanzania, United Republic of",
+        "name": "Tanzania",
         "alternates": [
-            "Tanzania"
+            "Tanzania, United Republic of"
         ],
         "code": "TZ"
     },
@@ -975,14 +978,6 @@
         "code": "GB"
     },
     {
-        "name": "United Kingdom",
-        "alternates": [
-            "UK",
-            "Great Britain"
-        ],
-        "code": "GB"
-    },
-    {
         "name": "Northern Ireland",
         "code": "GB-NIR"
     },
@@ -1030,11 +1025,11 @@
         "code": "VN"
     },
     {
-        "name": "Virgin Islands, British",
+        "name": "British Virgin Islands",
         "code": "VG"
     },
     {
-        "name": "Virgin Islands, U.S.",
+        "name": "U.S. Virgin Islands",
         "code": "VI"
     },
     {
