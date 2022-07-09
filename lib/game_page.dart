@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -6,17 +5,17 @@ import 'package:flutter/material.dart';
 class GamePage extends StatefulWidget {
   const GamePage({Key? key}) : super(key: key);
   @override
-  _GamePageState createState() => _GamePageState();
+  GamePageState createState() => GamePageState();
 }
 
-class _GamePageState extends State<GamePage> {
+class GamePageState extends State<GamePage> {
   int _score = 0;
   int _questionNumber = 1;
   bool _guessing = true;
   bool _lastCorrect = false;
   String _guess = 'USA';
   List<int> _order = [0];
-  dynamic _flag_data = [
+  dynamic _flagData = [
     {'name': 'United States', 'code': 'us'}
   ];
 
@@ -33,30 +32,28 @@ class _GamePageState extends State<GamePage> {
   loadJson() async {
     String data = await DefaultAssetBundle.of(context)
         .loadString("assets/flag_data.json");
-    _flag_data = jsonDecode(data); //latest Dart
+    _flagData = jsonDecode(data); //latest Dart
   }
 
   void generateOrder() {
     _order = List.generate(
-      _flag_data.length,
+      _flagData.length,
       (i) => i,
       growable: false,
-    ); //generate a list of numbers from 0 to length of flag_data
+    ); //generate a list of numbers from 0 to length of flagData
     _order.shuffle(); //shuffle the list
-    print(_order);
   }
 
   String _getAnswer() {
-    return _flag_data[_order[_questionNumber - 1]]['name'];
+    return _flagData[_order[_questionNumber - 1]]['name'];
   }
 
   String _flagString() {
-    var code = _flag_data[_order[_questionNumber - 1]]['code'].toLowerCase();
+    var code = _flagData[_order[_questionNumber - 1]]['code'].toLowerCase();
     return 'assets/flags/$code.png';
   }
 
   _submitGuess(String guess) {
-    print("Guess: $guess");
     setState(() {
       _guess = guess;
       _guessing = false;
@@ -68,7 +65,6 @@ class _GamePageState extends State<GamePage> {
   }
 
   _nextGuess() {
-    print('Next guess');
     setState(() {
       _guessing = true;
       _questionNumber++;

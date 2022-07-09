@@ -4,9 +4,7 @@ import './game_page.dart';
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
-  void startQuiz() {
-    print("Quiz starting");
-  }
+  void startQuiz() {}
 
   @override
   Widget build(BuildContext context) {
