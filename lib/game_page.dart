@@ -148,7 +148,7 @@ class _GamePageState extends State<GamePage> {
                   ),
                 ),
               ),
-              IsCorrect(_guess, false),
+              IsCorrect(_guess, _getAnswer()),
               const Center(
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(0, 150, 0, 20),
@@ -203,16 +203,20 @@ class GameHeader extends StatelessWidget {
 
 class IsCorrect extends StatelessWidget {
   final String guess;
-  final bool isCorrect;
+  final String answer;
 
-  const IsCorrect(this.guess, this.isCorrect, {Key? key}) : super(key: key);
+  const IsCorrect(this.guess, this.answer, {Key? key}) : super(key: key);
+
+  bool _isCorrect() {
+    return guess == answer;
+  }
 
   String _correctImage() {
-    return isCorrect ? 'assets/correct.png' : 'assets/incorrect.png';
+    return _isCorrect() ? 'assets/correct.png' : 'assets/incorrect.png';
   }
 
   String _correctStatement() {
-    return isCorrect ? '$guess is Correct!' : '$guess is Incorrect.';
+    return _isCorrect() ? '$guess is Correct!' : '$guess is Incorrect.';
   }
 
   @override
