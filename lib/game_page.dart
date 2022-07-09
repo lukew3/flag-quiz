@@ -1,4 +1,5 @@
 import 'dart:ffi';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,34 @@ class _GamePageState extends State<GamePage> {
   bool _guessing = true;
   String _answer = 'United States';
   String _guess = 'USA';
+  List<int> _order = [];
+  var _flag_data;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await loadJson();
+      generateOrder();
+    });
+  }
+
+  loadJson() async {
+    String data = await DefaultAssetBundle.of(context)
+        .loadString("assets/flag_data.json");
+    _flag_data = jsonDecode(data); //latest Dart
+    print(_flag_data[0]);
+  }
+
+  generateOrder() {
+    _order = List.generate(
+      _flag_data.length,
+      (i) => i,
+      growable: false,
+    ); //generate a list of numbers from 0 to length of flag_data
+    _order.shuffle(); //shuffle the list
+    print(_order);
+  }
 
   _submitGuess(String guess) {
     print("Guess: $guess");
@@ -41,7 +70,7 @@ class _GamePageState extends State<GamePage> {
               child: Padding(
                 padding: EdgeInsets.all(60),
                 child: Image(
-                  image: AssetImage('assets/flag_usa.png'),
+                  image: AssetImage('assets/flags/usa.png'),
                   width: 500,
                 ),
               ),
@@ -95,7 +124,7 @@ class _GamePageState extends State<GamePage> {
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(0, 60, 0, 20),
                   child: Image(
-                    image: AssetImage('assets/flag_usa.png'),
+                    image: AssetImage('assets/flags/usa.png'),
                     width: 500,
                   ),
                 ),
