@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './game_page.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -28,7 +29,12 @@ class MyHomePage extends StatelessWidget {
                           vertical: 20, horizontal: 36),
                       primary: Colors.black,
                       backgroundColor: Colors.green),
-                  onPressed: startQuiz,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const GamePage()),
+                    );
+                  },
                   child: const Text('Start Quiz')))
         ]));
   }
