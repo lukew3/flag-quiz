@@ -107,15 +107,6 @@ class _GamePageState extends State<GamePage> {
                   ),
                 ),
               ),
-              const Center(
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(0, 80, 0, 20),
-                  child: Image(
-                    image: AssetImage('assets/correct.png'),
-                    width: 60,
-                  ),
-                ),
-              ),
               IsCorrect(_answer, false),
               const Center(
                 child: Padding(
@@ -175,28 +166,37 @@ class IsCorrect extends StatelessWidget {
 
   const IsCorrect(this.answer, this.isCorrect, {Key? key}) : super(key: key);
 
+  String _correctImage() {
+    return isCorrect ? 'assets/correct.png' : 'assets/incorrect.png';
+  }
+
+  String _correctStatement() {
+    return isCorrect ? '$answer is Correct!' : '$answer is Incorrect.';
+  }
+
   @override
   Widget build(BuildContext context) {
-    if (isCorrect) {
-      return Center(
-        child: Text(
-          '$answer is Correct!',
-          style: const TextStyle(
-            fontSize: 20,
-            color: Colors.white,
+    return Column(
+      children: [
+        Center(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(0, 80, 0, 20),
+            child: Image(
+              image: AssetImage(_correctImage()),
+              width: 60,
+            ),
           ),
         ),
-      );
-    } else {
-      return Center(
-        child: Text(
-          '$answer is Incorrect.',
-          style: const TextStyle(
-            fontSize: 20,
-            color: Colors.white,
+        Center(
+          child: Text(
+            _correctStatement(),
+            style: const TextStyle(
+              fontSize: 20,
+              color: Colors.white,
+            ),
           ),
-        ),
-      );
-    }
+        )
+      ],
+    );
   }
 }
