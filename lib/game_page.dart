@@ -83,7 +83,7 @@ class GamePageState extends State<GamePage> {
                 padding: const EdgeInsets.all(60),
                 child: Image(
                   image: AssetImage(_flagString()),
-                  width: 500,
+                  height: 250,
                 ),
               ),
             ),
@@ -137,7 +137,7 @@ class GamePageState extends State<GamePage> {
                   padding: const EdgeInsets.fromLTRB(0, 60, 0, 20),
                   child: Image(
                     image: AssetImage(_flagString()),
-                    width: 500,
+                    height: 250,
                   ),
                 ),
               ),
