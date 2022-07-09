@@ -11,6 +11,7 @@ class GamePage extends StatefulWidget {
 class _GamePageState extends State<GamePage> {
   int _questionNumber = 1;
   bool _guessing = true;
+  String _answer = 'United States';
 
   _submitGuess(String guess) {
     print("Guess: $guess");
@@ -115,15 +116,7 @@ class _GamePageState extends State<GamePage> {
                   ),
                 ),
               ),
-              const Center(
-                child: Text(
-                  'United States of America is Correct!',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
+              IsCorrect(_answer, false),
               const Center(
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(0, 150, 0, 20),
@@ -173,5 +166,37 @@ class GameHeader extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class IsCorrect extends StatelessWidget {
+  final String answer;
+  final bool isCorrect;
+
+  const IsCorrect(this.answer, this.isCorrect, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    if (isCorrect) {
+      return Center(
+        child: Text(
+          '$answer is Correct!',
+          style: const TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        ),
+      );
+    } else {
+      return Center(
+        child: Text(
+          '$answer is Incorrect.',
+          style: const TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        ),
+      );
+    }
   }
 }
