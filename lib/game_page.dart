@@ -12,10 +12,11 @@ class GamePage extends StatefulWidget {
 class _GamePageState extends State<GamePage> {
   int _questionNumber = 1;
   bool _guessing = true;
-  String _answer = 'United States';
   String _guess = 'USA';
-  List<int> _order = [];
-  var _flag_data;
+  List<int> _order = [0];
+  dynamic _flag_data = [
+    {'name': 'United States', 'code': 'us'}
+  ];
 
   @override
   void initState() {
@@ -23,6 +24,7 @@ class _GamePageState extends State<GamePage> {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await loadJson();
       generateOrder();
+      setState(() {}); // force a re-render
     });
   }
 
@@ -30,7 +32,6 @@ class _GamePageState extends State<GamePage> {
     String data = await DefaultAssetBundle.of(context)
         .loadString("assets/flag_data.json");
     _flag_data = jsonDecode(data); //latest Dart
-    print(_flag_data[0]);
   }
 
   generateOrder() {
@@ -41,6 +42,15 @@ class _GamePageState extends State<GamePage> {
     ); //generate a list of numbers from 0 to length of flag_data
     _order.shuffle(); //shuffle the list
     print(_order);
+  }
+
+  _getAnswer() {
+    return _flag_data[_order[_questionNumber - 1]]['name'];
+  }
+
+  _flagString() {
+    var code = _flag_data[_order[_questionNumber - 1]]['code'].toLowerCase();
+    return 'assets/flags/$code.png';
   }
 
   _submitGuess(String guess) {
@@ -66,11 +76,11 @@ class _GamePageState extends State<GamePage> {
         body: Column(
           children: <Widget>[
             GameHeader(_questionNumber),
-            const Center(
+            Center(
               child: Padding(
-                padding: EdgeInsets.all(60),
+                padding: const EdgeInsets.all(60),
                 child: Image(
-                  image: AssetImage('assets/flags/usa.png'),
+                  image: AssetImage(_flagString()),
                   width: 500,
                 ),
               ),
@@ -120,18 +130,18 @@ class _GamePageState extends State<GamePage> {
           body: Column(
             children: <Widget>[
               GameHeader(_questionNumber),
-              const Center(
+              Center(
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(0, 60, 0, 20),
+                  padding: const EdgeInsets.fromLTRB(0, 60, 0, 20),
                   child: Image(
-                    image: AssetImage('assets/flags/usa.png'),
+                    image: AssetImage(_flagString()),
                     width: 500,
                   ),
                 ),
               ),
               Center(
                 child: Text(
-                  _answer,
+                  _getAnswer(),
                   style: const TextStyle(
                     fontSize: 20,
                     color: Colors.white,
