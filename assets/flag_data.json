@@ -481,12 +481,20 @@
         "code": "KR"
     },
     {
+        "name": "North Korea",
+        "code": "KP"
+    },
+    {
         "name": "Kuwait",
         "code": "KW"
     },
     {
         "name": "Kyrgyzstan",
         "code": "KG"
+    },
+    {
+        "name": "Laos",
+        "code": "LA"
     },
     {
         "name": "Latvia",
@@ -530,6 +538,10 @@
             "Macedonia"
         ],
         "code": "MK"
+    },
+    {
+        "name": "Montenegro",
+        "code": "ME"
     },
     {
         "name": "Madagascar",
@@ -632,10 +644,6 @@
     {
         "name": "Netherlands",
         "code": "NL"
-    },
-    {
-        "name": "Netherlands Antilles",
-        "code": "AN"
     },
     {
         "name": "New Caledonia",
@@ -741,6 +749,10 @@
         "code": "RO"
     },
     {
+        "name": "Serbia",
+        "code": "RS"
+    },  
+    {
         "name": "Russian Federation",
         "alternates": [
             "Russia"
@@ -748,7 +760,7 @@
         "code": "RU"
     },
     {
-        "name": "RWANDA",
+        "name": "Rwanda",
         "code": "RW"
     },
     {
@@ -792,8 +804,8 @@
         "code": "SN"
     },
     {
-        "name": "Serbia and Montenegro",
-        "code": "CS"
+        "name": "South Sudan",
+        "code": "SS"
     },
     {
         "name": "Seychelles",
@@ -822,6 +834,10 @@
     {
         "name": "Somalia",
         "code": "SO"
+    },
+    {
+        "name": "Sint Maarten",
+        "code": "SX"
     },
     {
         "name": "South Africa",
@@ -953,9 +969,34 @@
     {
         "name": "United Kingdom",
         "alternates": [
-            "UK"
+            "UK",
+            "Great Britain"
         ],
         "code": "GB"
+    },
+    {
+        "name": "United Kingdom",
+        "alternates": [
+            "UK",
+            "Great Britain"
+        ],
+        "code": "GB"
+    },
+    {
+        "name": "Northern Ireland",
+        "code": "GB-NIR"
+    },
+    {
+        "name": "England",
+        "code": "GB-ENG"
+    },
+    {
+        "name": "Scotland",
+        "code": "GB-SCT"
+    },
+    {
+        "name": "Wales",
+        "code": "GB-WLS"
     },
     {
         "name": "United States",
@@ -1003,6 +1044,10 @@
     {
         "name": "Western Sahara",
         "code": "EH"
+    },
+    {
+        "name": "Kosovo",
+        "code": "XK"
     },
     {
         "name": "Yemen",
