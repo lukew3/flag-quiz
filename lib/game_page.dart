@@ -10,8 +10,10 @@ class GamePage extends StatefulWidget {
 }
 
 class _GamePageState extends State<GamePage> {
+  int _score = 0;
   int _questionNumber = 1;
   bool _guessing = true;
+  bool _lastCorrect = false;
   String _guess = 'USA';
   List<int> _order = [0];
   dynamic _flag_data = [
@@ -34,7 +36,7 @@ class _GamePageState extends State<GamePage> {
     _flag_data = jsonDecode(data); //latest Dart
   }
 
-  generateOrder() {
+  void generateOrder() {
     _order = List.generate(
       _flag_data.length,
       (i) => i,
@@ -44,11 +46,11 @@ class _GamePageState extends State<GamePage> {
     print(_order);
   }
 
-  _getAnswer() {
+  String _getAnswer() {
     return _flag_data[_order[_questionNumber - 1]]['name'];
   }
 
-  _flagString() {
+  String _flagString() {
     var code = _flag_data[_order[_questionNumber - 1]]['code'].toLowerCase();
     return 'assets/flags/$code.png';
   }
@@ -58,6 +60,10 @@ class _GamePageState extends State<GamePage> {
     setState(() {
       _guess = guess;
       _guessing = false;
+      _lastCorrect = _guess == _getAnswer();
+      if (_lastCorrect) {
+        _score++;
+      }
     });
   }
 
@@ -75,7 +81,7 @@ class _GamePageState extends State<GamePage> {
       return Scaffold(
         body: Column(
           children: <Widget>[
-            GameHeader(_questionNumber),
+            GameHeader(_score, _questionNumber),
             Center(
               child: Padding(
                 padding: const EdgeInsets.all(60),
@@ -129,7 +135,7 @@ class _GamePageState extends State<GamePage> {
         child: Scaffold(
           body: Column(
             children: <Widget>[
-              GameHeader(_questionNumber),
+              GameHeader(_score, _questionNumber),
               Center(
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(0, 60, 0, 20),
@@ -148,7 +154,7 @@ class _GamePageState extends State<GamePage> {
                   ),
                 ),
               ),
-              IsCorrect(_guess, _getAnswer()),
+              IsCorrect(_guess, _lastCorrect),
               const Center(
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(0, 150, 0, 20),
@@ -170,9 +176,21 @@ class _GamePageState extends State<GamePage> {
 }
 
 class GameHeader extends StatelessWidget {
+  final int numCorrect;
   final int position;
 
-  const GameHeader(this.position, {Key? key}) : super(key: key);
+  const GameHeader(this.numCorrect, this.position, {Key? key})
+      : super(key: key);
+
+  String _remaining() {
+    int rem = 249 - position;
+    return '$rem remain';
+  }
+
+  String _score() {
+    int completed = position - 1;
+    return 'Score: $numCorrect/$completed';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -188,13 +206,24 @@ class GameHeader extends StatelessWidget {
               fontSize: 20,
             ),
           ),
-          Text(
-            '$position/195',
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-            ),
-          ),
+          Column(
+            children: [
+              Text(
+                _score(),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
+              ),
+              Text(
+                _remaining(),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
+              ),
+            ],
+          )
         ],
       ),
     );
@@ -203,20 +232,16 @@ class GameHeader extends StatelessWidget {
 
 class IsCorrect extends StatelessWidget {
   final String guess;
-  final String answer;
+  final bool correct;
 
-  const IsCorrect(this.guess, this.answer, {Key? key}) : super(key: key);
-
-  bool _isCorrect() {
-    return guess == answer;
-  }
+  const IsCorrect(this.guess, this.correct, {Key? key}) : super(key: key);
 
   String _correctImage() {
-    return _isCorrect() ? 'assets/correct.png' : 'assets/incorrect.png';
+    return correct ? 'assets/correct.png' : 'assets/incorrect.png';
   }
 
   String _correctStatement() {
-    return _isCorrect() ? '$guess is Correct!' : '$guess is Incorrect.';
+    return correct ? '$guess is Correct!' : '$guess is Incorrect.';
   }
 
   @override
